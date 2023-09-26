@@ -4,13 +4,6 @@ example: "TODO"
 info:
   label: Prediction
   slots:
-    layers:
-      - type: integer
-        name: counts
-        description: Raw counts
-      - type: double
-        name: normalized
-        description: Normalized counts
     uns:
       - type: list
         name: phenotypes

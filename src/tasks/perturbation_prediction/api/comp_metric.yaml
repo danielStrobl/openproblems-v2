@@ -1,0 +1,23 @@
+functionality:
+1
+  namespace: <task_id>/metrics
+2
+  info:
+3
+    type: metric
+    type_info:
+4
+      label: "Metric"
+5
+      description: "FILL IN: A description of what this type of component does."
+6
+  arguments:
+    - name: "--prediction"
+      __merge__: file_prediction.yaml
+      required: true
+    - name: "--solution"
+      __merge__: file_solution.yaml
+      required: true
+    - name: "--score"
+      required: true
+      direction: output
