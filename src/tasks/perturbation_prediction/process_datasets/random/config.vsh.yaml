@@ -1,0 +1,17 @@
+__merge__: ../../api/comp_process_dataset.yaml
+functionality:
+  name: process_dataset
+  description: Do the train test split of the anndata object
+  resources:
+    - type: python_script
+      path: script.py
+    - path: /src/common/helper_functions/subset_anndata.py
+platforms:
+  - type: docker
+    image: ghcr.io/openproblems-bio/base_python:1.0.1
+    setup:
+      - type: python
+        pypi:
+          - scanpy
+          - anndata
+  - type: nextflow

@@ -19,7 +19,7 @@ authors:
     props:
       github: your-github-account
       orcid: "0000-1111-2222-3333"
-  - name: "Irena Stoilova"
+  - name: "Irena Sliscovic"
     roles: [ author, maintainer ]
     props:
       github: your-github-account

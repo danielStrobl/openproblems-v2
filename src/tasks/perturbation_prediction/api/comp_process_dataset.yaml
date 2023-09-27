@@ -1,0 +1,22 @@
+functionality:
+  namespace: perturbation_prediction
+  info:
+    type: process_dataset
+    type_info:
+      label: Data processor
+      summary: A perturbation prediction dataset processor.
+      description: |
+        A component for performing different train-test splits.
+  arguments:
+    - name: "--input"
+      __merge__: file_solution.yaml
+      direction: input
+      required: true
+    - name: "--train_output"
+      __merge__: file_training.yaml
+      direction: output
+      required: true
+    - name: "--test_output"
+      __merge__: file_test.yaml
+      direction: output
+      required: true
