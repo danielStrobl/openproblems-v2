@@ -1,9 +1,9 @@
 # use method api spec
 __merge__: ../../api/comp_method_graph.yaml
 functionality:
-  name: lasso
+  name: xgboost
   info:
-    label: Lasso
+    label: XGBoost
     summary: "Lasso regression a la sklearn with default parameters."
     description: |
       "From sklearn: Linear regression trained with L1 prior as regularizer (aka
@@ -20,7 +20,7 @@ platforms:
     setup:
       - type: python
         pypi:
-          - sklearn
+          - xgboost
   - type: nextflow
     directives: 
       label: [ lowmem, lowcpu ]

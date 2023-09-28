@@ -24,22 +24,16 @@ meta = {
 
 ## VIASH END
 
-
-def pivot(csv, var, obs, pheno):
-    layers = {}
-    for i in pheno:
-        layers[i] = csv.pivot(index=obs, columns=var, values=i)
-    return layers
-
+def convert_to_adata(df):
+    label_cols = list(set(df.columns) - set(['value']))
+    return ad.AnnData(X=df[['value']], obs=df[label_cols])
 
 def optical_screen(csv_path):
     csv = pd.read_csv(csv_path, index_col=0)
-    layers = pivot(csv, 'gene', 'Cell line', ['IL1b_defect', 'TNFa_defect'])
-    adata = ad.AnnData(X=next(iter(layers.values())), layers=layers)
-    adata.uns['layers'] = list(layers.keys())
+    adata = convert_to_adata(csv)
     print(adata)
     print(par)
     adata.write_h5ad(par["output"], compression="gzip")
 
 print(os.listdir(meta['resources_dir']))
-optical_screen(meta['resources_dir']+"/OPTICAL_Secondary_processed.csv")
+optical_screen(meta['resources_dir']+"/optical_secondary_processed.csv")

@@ -23,4 +23,4 @@ platforms:
           - sklearn
   - type: nextflow
     directives: 
-      label: [ lowmem, lowcpu ]
+      label: [ midmem, lowcpu ]
