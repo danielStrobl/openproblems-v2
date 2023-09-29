@@ -26,7 +26,10 @@ meta = {
 
 def convert_to_adata(df):
     label_cols = list(set(df.columns) - set(['value']))
-    return ad.AnnData(X=df[['value']], obs=df[label_cols])
+    adata = ad.AnnData(X=df[['value']])
+    adata.obs = df[label_cols]
+    print(adata)
+    return adata
 
 def optical_screen(csv_path):
     csv = pd.read_csv(csv_path, index_col=0)

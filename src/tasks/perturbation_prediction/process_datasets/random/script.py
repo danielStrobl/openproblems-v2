@@ -1,7 +1,10 @@
 import sys
 import anndata as ad
 import numpy as np
-from utils import *
+import pandas as pd
+import os
+print(os.listdir())
+#from utils import *
 
 ## VIASH START
 par = {
@@ -15,8 +18,18 @@ meta = {}
 
 # Remove this after upgrading to Viash 0.7.5
 sys.dont_write_bytecode = True
+
+
 def subsample(l, perc):
     return np.random.choice(l, size=int(len(l)*perc), replace=False)
+
+def convert_to_adata(df):
+    label_cols = list(set(df.columns) - set(['value']))
+    return ad.AnnData(X=df[['value']], obs=df[label_cols])
+
+def convert_to_df(adata):
+    return pd.concat([adata.to_df(), adata.obs], axis=1)
+
 
 adata = ad.read(par['input'])
 df = convert_to_df(adata)

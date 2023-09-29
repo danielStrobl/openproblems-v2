@@ -18,6 +18,12 @@ functionality:
     - name: "--test"
       __merge__: file_test.yaml
       required: true
+    - name: "--gene_emb"
+      __merge__: file_emb.yaml
+      required: false
+    - name: "--cl_emb"
+      __merge__: file_emb_cl.yaml
+      required: false
     - name: "--output"
       __merge__: file_prediction.yaml
       required: true
